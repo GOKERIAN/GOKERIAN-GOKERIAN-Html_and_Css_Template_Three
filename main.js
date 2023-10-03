@@ -1,3 +1,36 @@
+const li = document.querySelector(".header .main-nav>li:last-child");
+const megaMenu = document.querySelector(".mega-menu");
+
+let isMenuVisible = false;
+
+li.addEventListener("click", (event) => {
+  // تمنع انتشار الحدث لعدم إغلاق القائمة فورًا
+  event.stopPropagation();
+
+  if (!isMenuVisible) {
+    megaMenu.style.opacity = 1;
+    megaMenu.style.zIndex = 100;
+    megaMenu.style.top = "calc(100% + 2px)";
+    isMenuVisible = true;
+  } else {
+    // إذا قمت بالنقر مرة أخرى على الزر li، سيتم إخفاء القائمة
+    megaMenu.style.opacity = 0;
+    megaMenu.style.zIndex = 0;
+    megaMenu.style.top = "0";
+    isMenuVisible = false;
+  }
+});
+
+// إضافة حدث النقر على الوثيقة لإخفاء القائمة عندما يتم النقر في أي مكان آخر
+document.addEventListener("click", (event) => {
+  if (event.target !== li) {
+    megaMenu.style.opacity = 0;
+    megaMenu.style.zIndex = 0;
+    megaMenu.style.top = "0";
+    isMenuVisible = false;
+  }
+});
+
 // Selectors for Progress Bars
 const ourSkillSection = document.querySelector(".our-skills");
 const progressBars = document.querySelectorAll(".our-skills .progress span");
@@ -73,26 +106,17 @@ const timer = setInterval(() => {
     document.getElementById("minutes").textContent = "00";
     document.getElementById("seconds").textContent = "00";
   } else {
-
-
     const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-
 
     const hours = Math.floor(
       (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
 
-
-    
     const minutes = Math.floor(
       (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
     );
 
-
     const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-
-
-
 
     document.getElementById("days").textContent = ` ${days}`;
     document.getElementById("hours").textContent =
