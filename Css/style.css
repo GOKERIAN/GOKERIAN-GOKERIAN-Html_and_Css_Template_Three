@@ -1248,6 +1248,7 @@ a {
    justify-content: center;
    margin: 0 auto 20px;
    align-items: center;
+   flex-wrap: wrap;
 
 }
 
@@ -1256,7 +1257,8 @@ a {
 
    border: 1px solid #d4d4d4;
    border-radius: 6px;
-   width: 65px;
+   min-width: 80px;
+
    transition: var(--main-transition);
 }
 

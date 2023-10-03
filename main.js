@@ -58,3 +58,48 @@ function counterFun(span) {
     }
   }, 6000 / parseInt(goal)); // Adjust the counter speed based on the goal
 }
+
+// Counter Time
+
+const endDate = new Date("2024-12-31T23:59:59").getTime();
+
+const timer = setInterval(() => {
+  const now = new Date().getTime();
+  const timeRemaining = endDate - now;
+
+  if (timeRemaining <= 0) {
+    document.getElementById("days").textContent = "00";
+    document.getElementById("hours").textContent = "00";
+    document.getElementById("minutes").textContent = "00";
+    document.getElementById("seconds").textContent = "00";
+  } else {
+
+
+    const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+
+
+    const hours = Math.floor(
+      (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+
+
+    
+    const minutes = Math.floor(
+      (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
+    );
+
+
+    const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+
+
+
+    document.getElementById("days").textContent = ` ${days}`;
+    document.getElementById("hours").textContent =
+      hours === 0 ? `0${hours}` : hours;
+    document.getElementById("minutes").textContent =
+      minutes === 0 ? `0${minutes}` : minutes;
+    document.getElementById("seconds").textContent =
+      seconds === 0 ? `0${seconds}` : seconds;
+  }
+}, 1000);
