@@ -1,35 +1,24 @@
-const li = document.querySelector(".header .main-nav>li:last-child");
-const megaMenu = document.querySelector(".mega-menu");
+// const li = document.querySelector(".header .main-nav>li:last-child");
+// const megaMenu = document.querySelector(".mega-menu");
 
-let isMenuVisible = false;
+// li.addEventListener("click", (event) => {
+  
+//   event.stopPropagation(); // تمنع انتشار الحدث لعدم إغلاق القائمة فورًا
+//   megaMenu.style.opacity = 1;
+//   megaMenu.style.zIndex = 100;
+//   megaMenu.style.top = "calc(100% + 2px)";
+// });
 
-li.addEventListener("click", (event) => {
-  // تمنع انتشار الحدث لعدم إغلاق القائمة فورًا
-  event.stopPropagation();
+// // إضافة حدث النقر على الوثيقة لإخفاء القائمة عندما يتم النقر في أي مكان آخر
+// document.addEventListener("click", (event) => {
+//   if (!li.contains(event.target)) {
+//     megaMenu.style.opacity = 0;
+//     megaMenu.style.zIndex = 0;
+//     megaMenu.style.top = "0";
+//   }
+// });
 
-  if (!isMenuVisible) {
-    megaMenu.style.opacity = 1;
-    megaMenu.style.zIndex = 100;
-    megaMenu.style.top = "calc(100% + 2px)";
-    isMenuVisible = true;
-  } else {
-    // إذا قمت بالنقر مرة أخرى على الزر li، سيتم إخفاء القائمة
-    megaMenu.style.opacity = 0;
-    megaMenu.style.zIndex = 0;
-    megaMenu.style.top = "0";
-    isMenuVisible = false;
-  }
-});
 
-// إضافة حدث النقر على الوثيقة لإخفاء القائمة عندما يتم النقر في أي مكان آخر
-document.addEventListener("click", (event) => {
-  if (event.target !== li) {
-    megaMenu.style.opacity = 0;
-    megaMenu.style.zIndex = 0;
-    megaMenu.style.top = "0";
-    isMenuVisible = false;
-  }
-});
 
 // Selectors for Progress Bars
 const ourSkillSection = document.querySelector(".our-skills");
